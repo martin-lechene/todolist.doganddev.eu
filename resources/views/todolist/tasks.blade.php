@@ -18,60 +18,49 @@
     {!! csrf_field() !!}
 <!-- Task Name -->
         <div class="form-group p-2 pt-3">
-            <label for="task" class="control-label font-weight-bold">Task</label>
+            <label for="task" class="control-label font-weight-bold">{{ __('Task') }}</label>
             <input type="text" name="name" id="task-name" class="form-control rounded">
         </div>
 <!-- Add Task Button -->
         <div class="form-group pt-3">
             <div class="col-sm-offset-3 col-sm-6">
                 <button type="submit" class="btn btn-primary rounded">
-                    <i class="fa fa-plus"></i> Add Task
+                    <i class="fa fa-plus"></i> {{ __('Add Task') }}
                 </button>
             </div>
         </div>
     </form>
     <div class="p-3">
     @if (count($tasks) > 0)
-            <strong>Tasks:</strong>
+            <strong>{{ __('Tasks:') }}</strong>
             <div class="row">
+                <h3>{{ __('3 task remains') }}</h3>
                 @foreach ($tasks as $task)
-                <div class="col-md-6">
-                    <div class="card rounded m-2 p-2">
-                        <h6 class="header-card text-center">{{ $task->name }}</h6>
-                        <div class="body-card text-center">
-                            <div class="p-2">
-                                @if ($task->completed == 1)
-                                <label class="text-success">Completed</label>
-                                @elseif ($task->completed == 2)
-                                <label class="text-danger">In wait</label>
-                                @elseif ($task->completed == 0)
-                                <label class="text-warning">Not Completed</label>
-                                @else
-                                <label class="text-danger">No status</label>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="footer-card text-center">
-                            @guest
-                                <div class="alert alert-warning">No logged</div>
-                            @elseif (Auth::user()->id == $task->user_id)
-                                <a href="{{ url('task/'.$task->id) }}" class="btn btn-info">View</a>
-                                <a href="{{ url('task/'.$task->id.'/edit') }}" class="btn btn-warning">Edit</a>
-                                <a href="{{ url('task/'.$task->id.'/delete') }}" class="btn btn-danger">Delete</a>
-                            @elseif (Auth::user()->role == 'admin')
-                                <a href="{{ url('task/'.$task->id) }}" class="btn btn-info">View</a>
-                                <a href="{{ url('task/'.$task->id.'/edit') }}" class="btn btn-warning">Edit</a>
-                                <a href="{{ url('task/'.$task->id.'/delete') }}" class="btn btn-danger">Delete</a>
-                            <!--  if user is group
-                            {# @ elseif (Auth::user()->group->id == $group->id) #}
-                                <a href="{{ url('task/'.$task->id) }}" class="btn btn-info">View</a>
-                            -->
-                            @else
-                                <div class="alert alert-warning">It's not available</div>
-                            @endif
-                        </div>
+                    @if (($task->id == Auth::user()->id) && ($task->completed == 0 ) )
+                    <div class="col-12">
+                        <table class="card rounded p-3">
+                            <th>
+                                <td><form method="POST" action="{# { route('task') } #}"><button type="submit" class="nav-link text-decoration-none bg-transparent border-0"><i class="fas fa-times"></i></button></form></td>
+                                <td>{{ $task->name }}</td>
+                            </th>
+                        </table>
                     </div>
-                </div>
+                    @endif
+                @endforeach
+                <!-- If tasks is not completed  -->
+                <!-- If tasks is completed  -->
+                <h4>{{ __('Completed tasks') }}</h4>
+                @foreach ($tasks as $task)
+                    @if ($task->completed == 1)
+                    <div class="col-12">
+                        <table class="card rounded p-3">
+                            <th>
+                                <td><form method="POST" action="{# { route('task') } #}"><button type="submit" class="nav-link text-decoration-none rounded-full bg-success border-1"><i class="text-white fas fa-check"></i></button></form></td>
+                                <td>{{ $task->name }}</td>
+                            </th>
+                        </table>
+                    </div>
+                    @endif
                 @endforeach
             </div>
     @else
