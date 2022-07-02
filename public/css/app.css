@@ -18631,7 +18631,7 @@ body {
 }
 
 .text-secondary {
-  color: #f8fafc;
+  color: #bee651;
 }
 
 .text-light {
@@ -18663,13 +18663,13 @@ body {
 
 .btn-secondary {
   color: #000;
-  background-color: #f8fafc;
+  background-color: #bee651;
   border-color: #000;
 }
 .btn-secondary:hover {
   color: #000;
   background-color: white;
-  border-color: #f8fafc;
+  border-color: #bee651;
 }
 
 .rounded {
@@ -18710,7 +18710,6 @@ button:hover, button:focus {
 
 ul.custom-checkbox {
   list-style: none;
-  padding: 20px;
 }
 ul.custom-checkbox li {
   display: block;
