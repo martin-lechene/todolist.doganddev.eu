@@ -7,11 +7,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>TO-DO LIST (Canell)</title>
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>-->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
@@ -19,7 +19,7 @@
     <link href="https://fonts.googleapis.com/css?family=Consola" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">-->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 </head>
@@ -59,8 +59,8 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <div class="btn btn-primary" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                <div class="" aria-labelledby="navbarDropdown">
+                                    <a class="btn btn-primary" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     <i class="fas fa-sign-out-alt"></i>
@@ -71,10 +71,8 @@
                                     </form>
                                 </div>
 
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <i class="fas fa-user-astronaut"></i>
-
-                                    {{ Auth::user()->name }}
+                                <a id="navbarDropdown" class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <i class="fas fa-user-astronaut"></i> {{ Auth::user()->name }}, <b>{{ Auth::user()->role }}</b>
                                 </a>
                             </li>
                         @endguest
@@ -82,10 +80,15 @@
                 </div>
             </div>
         </nav>
-
-        <main class="p-5">
+        <main>
             <h1 class="text-center">To do list</h1>
-            @yield('content')
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        @yield('content')
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
 </body>

@@ -27,47 +27,6 @@ $color-gray-600: #6c757d;
 $color-gray-700: #495057;
 $color-gray-800: #343a40;
 $color-gray-900: #212529;
-
-
-.text-primary {
-  color: $color-primary;
-}
-.text-secondary {
-  color: $color-secondary;
-}
-.text-success {
-  color: $color-success;
-}
-.text-danger {
-  color: $color-danger;
-}
-.text-warning {
-  color: $color-warning;
-}
-.text-info {
-  color: $color-info;
-}
-.text-light {
-  color: $color-light;
-}
-.text-dark {
-  color: $color-dark;
-}
-.text-white {
-  color: $color-white;
-}
-.text-black {
-  color: $color-black;
-}
-
-.btn-primary {
-  color: $color-white;
-  background-color: $color-primary;
-  border-color: $color-primary;
-}
-.btn-secondary {
-  color: $color-black;
-  background-color: $color-secondary;
-  border-color: $color-secondary;
-}
+// Body
+$body-bg:#a6ebf3;
 
