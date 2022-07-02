@@ -1,0 +1,61 @@
+// Body
+$body-bg: #f8fafc;
+
+// Typography
+$font-family-sans-serif: 'Consola', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+
+// Colors
+$color-primary: rgb(97, 27, 166);
+$color-secondary: #f8fafc;
+$color-success: #28a745;
+$color-danger: #dc3545;
+$color-warning: #ffc107;
+$color-info: #17a2b8;
+$color-light: #f8fafc;
+$color-dark: #343a40;
+$color-white: #fff;
+$color-black: #000;
+$color-gray-100: #f8fafc;
+$color-gray-200: #e9ecef;
+$color-gray-300: #dee2e6;
+$color-gray-400: #ced4da;
+$color-gray-500: #adb5bd;
+$color-gray-600: #6c757d;
+$color-gray-700: #495057;
+$color-gray-800: #343a40;
+$color-gray-900: #212529;
+
+
+.text-primary {
+  color: $color-primary;
+}
+.text-secondary {
+  color: $color-secondary;
+}
+.text-success {
+  color: $color-success;
+}
+.text-danger {
+  color: $color-danger;
+}
+.text-warning {
+  color: $color-warning;
+}
+.text-info {
+  color: $color-info;
+}
+.text-light {
+  color: $color-light;
+}
+.text-dark {
+  color: $color-dark;
+}
+.text-white {
+  color: $color-white;
+}
+.text-black {
+  color: $color-black;
+}
