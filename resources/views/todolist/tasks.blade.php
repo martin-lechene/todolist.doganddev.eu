@@ -15,6 +15,9 @@
     @include('common.errors')
 
     <div class="p-3">
+        <a class="btn btn-secondary" href="/">
+            <i class="fa fa-plus"></i> Add tasks
+        </a>
     @if (count($tasks) > 0)
             <div class="row">
                 <h3>{{ __('3 task remains') }}</h3>
