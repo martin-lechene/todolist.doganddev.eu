@@ -13,55 +13,51 @@
     @else
 <!-- Display Validation Errors -->
     @include('common.errors')
-<!-- New Task Form -->
-    <form action="{{ url('task') }}" method="POST" class="form-horizontal">
-    {!! csrf_field() !!}
-<!-- Task Name -->
-        <div class="form-group p-2 pt-3">
-            <label for="task" class="control-label font-weight-bold">{{ __('Task') }}</label>
-            <input type="text" name="name" id="task-name" class="form-control rounded">
-        </div>
-<!-- Add Task Button -->
-        <div class="form-group pt-3">
-            <div class="col-sm-offset-3 col-sm-6">
-                <button type="submit" class="btn btn-primary rounded">
-                    <i class="fa fa-plus"></i> {{ __('Add Task') }}
-                </button>
-            </div>
-        </div>
-    </form>
+
     <div class="p-3">
     @if (count($tasks) > 0)
-            <strong>{{ __('Tasks:') }}</strong>
             <div class="row">
                 <h3>{{ __('3 task remains') }}</h3>
                 @foreach ($tasks as $task)
-                    @if (($task->id == Auth::user()->id) && ($task->completed == 0 ) )
-                    <div class="col-12">
-                        <table class="card rounded p-3">
-                            <th>
-                                <td><form method="POST" action="{# { route('task') } #}"><button type="submit" class="nav-link text-decoration-none bg-transparent border-0"><i class="fas fa-times"></i></button></form></td>
-                                <td>{{ $task->name }}</td>
-                            </th>
-                        </table>
-                    </div>
+                    @if ($task->user_id == Auth::user()->id)
+                        @if ($task->completed == 0)
+                            @if($loop->index < 3)
+                            <ul class="custom-checkbox rounded">
+                                <li>
+                                    <form method="POST" action="{# { route('task', {# task id #}) } #}">
+                                        <input type="checkbox" value="1" id="{# id #}">
+                                        <label for="{# id #}">
+                                            <i class="fas fa-times text-danger"></i>
+                                            {{ $task->name }}
+                                        </label>
+                                    </form>
+                                </li>
+                            </ul>
+                            @endif
+                        @endif
                     @endif
                 @endforeach
                 <!-- If tasks is not completed  -->
                 <!-- If tasks is completed  -->
                 <h4>{{ __('Completed tasks') }}</h4>
+                <div class="col-12">
                 @foreach ($tasks as $task)
-                    @if ($task->completed == 1)
-                    <div class="col-12">
-                        <table class="card rounded p-3">
-                            <th>
-                                <td><form method="POST" action="{# { route('task') } #}"><button type="submit" class="nav-link text-decoration-none rounded-full bg-success border-1"><i class="text-white fas fa-check"></i></button></form></td>
-                                <td>{{ $task->name }}</td>
-                            </th>
-                        </table>
-                    </div>
+                    @if ($task->user_id == Auth::user()->id)
+                        @if ($task->completed == 1)
+                            <ul class="custom-checkbox">
+
+                                <li>
+                                    <input  type="checkbox" id="{# task id #}" checked disabled />
+                                    <label  for="{# task id #}">
+                                        <i class="fa fa-check-circle text-success"></i>
+                                    {{ $task->name }}
+                                    </label>
+                                </li>
+                            </ul>
+                        @endif
                     @endif
                 @endforeach
+                </div>
             </div>
     @else
         <div class="alert alert-info">
@@ -69,6 +65,11 @@
         </div>
     @endif
     </div>
+    @if (Auth::user()->role == "society")
+    <div class="text-center p-3">
+        <a href="/tasks/add" class="btn btn-primary"><i class="fas fa-plus"></i> Create a news tasks</a>
+    </div>
+    @endif
 <!-- TODO: Current Tasks -->
     @endguest
 </div>
