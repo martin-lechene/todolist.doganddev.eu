@@ -18634,22 +18634,6 @@ body {
   color: #f8fafc;
 }
 
-.text-success {
-  color: #28a745;
-}
-
-.text-danger {
-  color: #dc3545;
-}
-
-.text-warning {
-  color: #ffc107;
-}
-
-.text-info {
-  color: #17a2b8;
-}
-
 .text-light {
   color: #f8fafc;
 }
@@ -18698,6 +18682,6 @@ body {
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   font-family: "Consola", monospace;
-  font-weight: 700;
+  font-weight: 800;
   color: rgb(52, 105, 151);
 }
