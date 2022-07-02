@@ -36,11 +36,9 @@
             <div class="row">
                 @foreach ($tasks as $task)
                 <div class="col-md-6">
-                    <div class="card rounded m-2">
-                        <div class="card-header">
-                        {{ $task->name }}
-                        </div>
-                        <div class="card-body">
+                    <div class="card rounded m-2 p-2">
+                        <h6 class="header-card text-center">{{ $task->name }}</h6>
+                        <div class="body-card text-center">
                             <div class="p-2">
                                 @if ($task->completed == 1)
                                 <label class="text-success">Completed</label>
@@ -53,7 +51,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="card-footer text-center">
+                        <div class="footer-card text-center">
                             @guest
                                 <div class="alert alert-warning">No logged</div>
                             @elseif (Auth::user()->id == $task->user_id)
@@ -64,6 +62,12 @@
                                 <a href="{{ url('task/'.$task->id) }}" class="btn btn-info">View</a>
                                 <a href="{{ url('task/'.$task->id.'/edit') }}" class="btn btn-warning">Edit</a>
                                 <a href="{{ url('task/'.$task->id.'/delete') }}" class="btn btn-danger">Delete</a>
+                            <!--  if user is group
+                            {# @ elseif (Auth::user()->group->id == $group->id) #}
+                                <a href="{{ url('task/'.$task->id) }}" class="btn btn-info">View</a>
+                            -->
+                            @else
+                                <div class="alert alert-warning">It's not available</div>
                             @endif
                         </div>
                     </div>

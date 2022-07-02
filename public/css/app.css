@@ -18689,9 +18689,15 @@ body {
 }
 
 .rounded {
-  border-radius: 2rem;
+  border-radius: 2.5rem;
 }
 
 .icon-logout {
   margin-left: 1rem;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  font-family: "Consola", monospace;
+  font-weight: 700;
+  color: rgb(52, 105, 151);
 }
