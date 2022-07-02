@@ -13,58 +13,64 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/regular';
 
-body{
-    background-color: $body-bg;
-}
-.text-primary {
-    color: $color-primary;
-  }
-  .text-secondary {
-    color: $color-secondary;
-  }
-  .text-success {
-    color: $color-success;
-  }
-  .text-danger {
-    color: $color-danger;
-  }
-  .text-warning {
-    color: $color-warning;
-  }
-  .text-info {
-    color: $color-info;
-  }
-  .text-light {
-    color: $color-light;
-  }
-  .text-dark {
-    color: $color-dark;
-  }
-  .text-white {
-    color: $color-white;
-  }
-  .text-black {
-    color: $color-black;
-  }
-
-  .btn-primary {
-    color: $color-white;
-    background-color: $color-primary;
-    border-color: $color-primary;
-    &hover {
-      color: $color-white;
-      background-color: lighten($color-primary, 10%);
-      border-color: $color-primary;
+    body{
+        background-color: $body-bg;
     }
-  }
-
-  .btn-secondary {
-    color: $color-black;
-    background-color: $color-secondary;
-    border-color: $color-black;
-    &hover {
-      color: $color-black;
-      background-color: lighten($color-secondary, 50%);
-      border-color: $color-secondary;
+    .text-primary {
+        color: $color-primary;
     }
-  }
+    .text-secondary {
+        color: $color-secondary;
+    }
+    .text-success {
+        color: $color-success;
+    }
+    .text-danger {
+        color: $color-danger;
+    }
+    .text-warning {
+        color: $color-warning;
+    }
+    .text-info {
+        color: $color-info;
+    }
+    .text-light {
+        color: $color-light;
+    }
+    .text-dark {
+        color: $color-dark;
+    }
+    .text-white {
+        color: $color-white;
+    }
+    .text-black {
+        color: $color-black;
+    }
+
+    .btn-primary {
+        color: $color-white;
+        background-color: $color-primary;
+        border-color: $color-primary;
+        &:hover {
+        color: $color-white;
+        background-color: lighten($color-primary, 10%);
+        border-color: $color-primary;
+        }
+    }
+
+    .btn-secondary {
+        color: $color-black;
+        background-color: $color-secondary;
+        border-color: $color-black;
+        &:hover {
+        color: $color-black;
+        background-color: lighten($color-secondary, 50%);
+        border-color: $color-secondary;
+        }
+    }
+    .rounded{
+        border-radius: 2.5rem;
+    }
+    .icon-logout{
+        margin-left: 1rem;
+    }

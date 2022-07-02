@@ -18671,7 +18671,7 @@ body {
   background-color: #611ba6;
   border-color: #611ba6;
 }
-.btn-primaryhover {
+.btn-primary:hover {
   color: #fff;
   background-color: #7b22d2;
   border-color: #611ba6;
@@ -18681,4 +18681,17 @@ body {
   color: #000;
   background-color: #f8fafc;
   border-color: #000;
+}
+.btn-secondary:hover {
+  color: #000;
+  background-color: white;
+  border-color: #f8fafc;
+}
+
+.rounded {
+  border-radius: 2rem;
+}
+
+.icon-logout {
+  margin-left: 1rem;
 }
