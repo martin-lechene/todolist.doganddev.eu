@@ -5,9 +5,9 @@
 [X] Chaque tâche marquée comme terminée affichera le nom de l’utilisateur qui l’a déclarée achevée
 [X] Bien évidemment une isolation parfaite entre les tâches entreprises sera demandée
 [V] Un système d’authentification devra être mis en place se basant sur un couple mail / password.
-[X] La procédure de récupération de mot de passe devra être fonctionnelle
+[V] La procédure de récupération de mot de passe devra être fonctionnelle
 [X] Le fait de cocher une tâche ne provoque pas le rechargement de la page mais une mise à jour de celle-ci
-[X] L’administrateur seul peut repasser l’état d’une tâche à inachevée
+[V] L’administrateur seul peut repasser l’état d’une tâche à inachevée
 #### Bonus :
 [X] Bonus: interface multilangue FR/EN
 [X] Bonus: une page de gestion des employés de l’entreprise avec la possibilité de créer un nouvel employé et d’envoyer une invitation par mail

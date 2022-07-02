@@ -30,6 +30,52 @@
             </div>
         </div>
     </form>
+    <div class="p-3">
+    @if (count($tasks) > 0)
+            <strong>Tasks:</strong>
+            <div class="row">
+                @foreach ($tasks as $task)
+                <div class="col-md-6">
+                    <div class="card rounded m-2">
+                        <div class="card-header">
+                        {{ $task->name }}
+                        </div>
+                        <div class="card-body">
+                            <div class="p-2">
+                                @if ($task->completed == 1)
+                                <label class="text-success">Completed</label>
+                                @elseif ($task->completed == 2)
+                                <label class="text-danger">In wait</label>
+                                @elseif ($task->completed == 0)
+                                <label class="text-warning">Not Completed</label>
+                                @else
+                                <label class="text-danger">No status</label>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="card-footer text-center">
+                            @guest
+                                <div class="alert alert-warning">No logged</div>
+                            @elseif (Auth::user()->id == $task->user_id)
+                                <a href="{{ url('task/'.$task->id) }}" class="btn btn-info">View</a>
+                                <a href="{{ url('task/'.$task->id.'/edit') }}" class="btn btn-warning">Edit</a>
+                                <a href="{{ url('task/'.$task->id.'/delete') }}" class="btn btn-danger">Delete</a>
+                            @elseif (Auth::user()->role == 'admin')
+                                <a href="{{ url('task/'.$task->id) }}" class="btn btn-info">View</a>
+                                <a href="{{ url('task/'.$task->id.'/edit') }}" class="btn btn-warning">Edit</a>
+                                <a href="{{ url('task/'.$task->id.'/delete') }}" class="btn btn-danger">Delete</a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+    @else
+        <div class="alert alert-info">
+            <strong>No tasks found.</strong>
+        </div>
+    @endif
+    </div>
 <!-- TODO: Current Tasks -->
     @endguest
 </div>
