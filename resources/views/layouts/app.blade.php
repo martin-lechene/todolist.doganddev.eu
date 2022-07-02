@@ -63,9 +63,8 @@
                                     <a class="btn btn-primary" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                    <i class="icon-logout fas fa-sign-out-alt"></i>
-
+                                        {{ __('Logout') }}
+                                        <i class="icon-logout fas fa-sign-out-alt"></i>
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf

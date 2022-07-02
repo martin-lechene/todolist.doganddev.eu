@@ -21,6 +21,10 @@ Route::get('/welcome', function () {
 Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/change-password', [App\Http\Controllers\HomeController::class, 'changePassword'])->name('change-password');
+
+
+
 /**
  * Show Task Dashboard
  */
