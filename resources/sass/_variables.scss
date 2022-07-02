@@ -8,7 +8,7 @@ $line-height-base: 1.6;
 
 
 // Colors
-$color-primary: rgb(97, 27, 166);
+$color-primary: #611ba6;
 $color-secondary: #f8fafc;
 $color-success: #28a745;
 $color-danger: #dc3545;
@@ -59,3 +59,15 @@ $color-gray-900: #212529;
 .text-black {
   color: $color-black;
 }
+
+.btn-primary {
+  color: $color-white;
+  background-color: $color-primary;
+  border-color: $color-primary;
+}
+.btn-secondary {
+  color: $color-black;
+  background-color: $color-secondary;
+  border-color: $color-secondary;
+}
+

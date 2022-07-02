@@ -13,8 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    {{ __('You are logged in!') }}
+                    <a class="btn btn-primary" href="#">{{ __('Create a task') }}</a>
                 </div>
             </div>
         </div>
