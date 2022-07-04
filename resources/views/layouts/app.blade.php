@@ -39,7 +39,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">{{ __('Welcome') }}</a>
+                            <a class="nav-link" href="/tasks">{{ __('To Do List') }}</a>
                         </li>
                     </ul>
 
@@ -82,7 +82,7 @@
             </div>
         </nav>
         <main>
-            <h1 class="text-center">To do list</h1>
+            <h1 class="text-center">{{__('To do list')}}</h1>
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-6">

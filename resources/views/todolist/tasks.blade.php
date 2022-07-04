@@ -7,7 +7,7 @@
     @guest
     <div class="panel-body">
         <div class="alert alert-danger">
-            <strong>You are not authorized to view this page.</strong>
+            <strong>{{__('You are not authorized to view this page.')}}</strong>
         </div>
     </div>
     @else
@@ -18,16 +18,16 @@
 
     @if (count($tasks) > 0)
             <div class="row">
-                <div class="d-flex justify-content-end font-weight-bold">
-                    <a class="btn btn-secondary" href="/">
-                        <i class="fa fa-plus"></i> <b>Add tasks</b>
-                    </a>
-                </div>
+                @if (Auth::user()->role == 'admin')
+                    <div class="d-flex justify-content-end font-weight-bold">
+                        <a class="btn btn-secondary" href="/">
+                            <i class="fa fa-plus"></i> <b>{{__('Add tasks')}}</b>
+                        </a>
+                    </div>
+                @endif
                 <h4>{{ __('3 task remains') }}</h4>
                 @foreach ($tasks as $task)
-                    @if ($task->user_id == Auth::user()->id)
-                        @if ($task->completed == 0)
-                            @if($loop->index < 10)
+                    @if (($task->user_id == Auth::user()->id) OR (($task->completed == 0 ) && ($task->company == $company)))
                             <ul class="custom-checkbox rounded">
                                 <li>
                                     <form method="POST" action="{# { route('task', {# task id #}) } #}">
@@ -39,8 +39,6 @@
                                     </form>
                                 </li>
                             </ul>
-                            @endif
-                        @endif
                     @endif
                 @endforeach
                 <!-- If tasks is not completed  -->
@@ -64,13 +62,13 @@
             </div>
     @else
         <div class="alert alert-info">
-            <strong>No tasks found.</strong>
+            <strong>{{ __('No tasks found.')}}</strong>
         </div>
     @endif
     </div>
     @if (Auth::user()->role == "society")
     <div class="text-center p-3">
-        <a href="/tasks/add" class="btn btn-primary"><i class="fas fa-plus"></i> Create a news tasks</a>
+        <a href="/tasks/add" class="btn btn-primary"><i class="fas fa-plus"></i> {{ __('Create a news tasks') }}</a>
     </div>
     @endif
 <!-- TODO: Current Tasks -->
