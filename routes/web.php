@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -15,16 +16,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // Route example
-Route::get('/welcome', function () {
-    return view('welcome');
-});
+    Route::get('/welcome', function () {
+        $users = User::orderBy('created_at', 'asc')->get();
+        $tasks = Task::orderBy('created_at', 'asc')->get();
+
+        return view('welcome', [
+            'users' => $users,
+            'tasks' => $tasks
+        ]);
+
+    });
 
 Auth::routes();
 // Homepage
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 // Route of change password
 Route::get('/change-password', [App\Http\Controllers\HomeController::class, 'changePassword'])->name('change-password');
+
 // Route of register by invite email
 Route::get('register/request', 'Auth\RegisterController@requestInvitation')->name('requestInvitation');
 Route::post('invitations', 'InvitationsController@store')->middleware('guest')->name('storeInvitation');
@@ -54,29 +64,58 @@ Route::get('/tasks', function () {
 /**
  * Add New Task
  */
-Route::post('/task', function (Request $request) {
-    $validator = Validator::make($request->all(), [
-        'name' => 'required|max:255',
-    ]);
+Route::group([
+    'middleware' => ['auth', 'admin'],
+    'prefix' => 'invitations'
+], function() {
+    Route::post('/task', function (Request $request) {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+        ]);
 
-    if ($validator->fails()) {
-          return redirect('/tasks')
-          ->withInput()
-          ->withErrors($validator);
-    }
+        if ($validator->fails()) {
+            return redirect('/tasks')
+            ->withInput()
+            ->withErrors($validator);
+        }
 
-    // Create The Task...
-    $task = new Task;
-    $task->name = $request->name;
-    $task->user_id = Auth::user()->id;
-    $task->save();
+        // Create The Task...
+        $task = new Task;
+        $task->name = $request->name;
+        $task->user_id = Auth::user()->id;
+        $task->save();
 
-    return redirect('/tasks');
+        return redirect('/tasks');
+    });
 });
 
 /**
  * Delete Task
  */
-Route::delete('/task/{task}', function (Task $task) {
-    //
+Route::group([
+    'middleware' => ['auth', 'admin'],
+    'prefix' => 'invitations'
+], function() {
+        Route::delete('/task/{task}', function (Task $task) {
+        $task->delete();
+        return redirect('/tasks');
+    });
 });
+
+
+/**
+ * Update Task
+ */
+Route::group([
+    'middleware' => ['auth', 'admin'],
+    'prefix' => 'invitations'
+], function() {
+    Route::put('/task/{task}', function (Task $task) {
+        $task->update([
+            'completed' => '1'
+        ]);
+        return redirect('/tasks');
+    });
+});
+
+
