@@ -40,7 +40,6 @@ Route::group([
     Route::get('/', 'InvitationsController@index')->name('showInvitations');
 });
 
-
 /**
  * Show Task Dashboard
  */
@@ -74,6 +73,7 @@ Route::post('/task', function (Request $request) {
 
     return redirect('/tasks');
 });
+
 /**
  * Delete Task
  */
