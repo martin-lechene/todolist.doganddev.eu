@@ -25,7 +25,20 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route of change password
 Route::get('/change-password', [App\Http\Controllers\HomeController::class, 'changePassword'])->name('change-password');
+// Route of register by invite email
+Route::get('register/request', 'Auth\RegisterController@requestInvitation')->name('requestInvitation');
+Route::post('invitations', 'InvitationsController@store')->middleware('guest')->name('storeInvitation');
 
+/**
+ * Invitations group with auth middleware.
+ * Even though we only have one route currently, the route group is for future updates.
+ */
+Route::group([
+    'middleware' => ['auth', 'admin'],
+    'prefix' => 'invitations'
+], function() {
+    Route::get('/', 'InvitationsController@index')->name('showInvitations');
+});
 
 
 /**
