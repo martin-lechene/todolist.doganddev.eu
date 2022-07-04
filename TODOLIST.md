@@ -24,7 +24,8 @@
 - - [X] Formulaire d'envoi d'invitation par mail
 - - [X] Système de gestion des employés
 - [X] Bonus: gestion des dates. Possibilité d’ajouter une deadline sur une tâche. La tâche s’affiche en rouge si la deadline est dépassée. Affichage de la date à laquelle la tâche a été achevée.
-
+- [O]
+- [x]
 
 # Aspects techniques
 - Utilisation de Laravel comme base d’application
