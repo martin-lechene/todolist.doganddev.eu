@@ -16,16 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // Route example
-    Route::get('/welcome', function () {
-        $users = User::orderBy('created_at', 'asc')->get();
-        $tasks = Task::orderBy('created_at', 'asc')->get();
 
-        return view('welcome', [
-            'users' => $users,
-            'tasks' => $tasks
-        ]);
-
-    });
 
 Auth::routes();
 // Homepage
@@ -38,6 +29,26 @@ Route::get('/change-password', [App\Http\Controllers\HomeController::class, 'cha
 // Route of register by invite email
 Route::get('register/request', 'Auth\RegisterController@requestInvitation')->name('requestInvitation');
 Route::post('invitations', 'InvitationsController@store')->middleware('guest')->name('storeInvitation');
+
+// AdminLTE page
+Route::group([
+    'middleware' => ['auth', 'admin'],
+    'prefix' => 'admin'
+], function() {
+    Route::get('/admin', function () {
+        $users = User::orderBy('created_at', 'asc')->get();
+        $tasks = Task::orderBy('created_at', 'asc')->get();
+
+        return view('
+        welcome', [
+            'users' => $users,
+            'tasks' => $tasks
+        ]);
+
+    });
+
+});
+
 
 /**
  * Invitations group with auth middleware.
@@ -66,7 +77,7 @@ Route::get('/tasks', function () {
  */
 Route::group([
     'middleware' => ['auth', 'admin'],
-    'prefix' => 'invitations'
+    'prefix' => 'task.add'
 ], function() {
     Route::post('/task', function (Request $request) {
         $validator = Validator::make($request->all(), [
@@ -94,7 +105,7 @@ Route::group([
  */
 Route::group([
     'middleware' => ['auth', 'admin'],
-    'prefix' => 'invitations'
+    'prefix' => 'task.delete'
 ], function() {
         Route::delete('/task/{task}', function (Task $task) {
         $task->delete();
@@ -108,7 +119,7 @@ Route::group([
  */
 Route::group([
     'middleware' => ['auth', 'admin'],
-    'prefix' => 'invitations'
+    'prefix' => 'task.update'
 ], function() {
     Route::put('/task/{task}', function (Task $task) {
         $task->update([
