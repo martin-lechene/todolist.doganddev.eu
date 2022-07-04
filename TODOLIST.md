@@ -1,20 +1,21 @@
 # Description fonctionnelle du projet
 ### Fonctionnalités attendues :
-- [X] Elle devrait pouvoir être utilisée par plusieurs entreprises clientes
-- [X] Chaque client possédera plusieurs employés qui pourront accéder aux tâches propres à leur entreprise.
-- [X] Chaque tâche marquée comme terminée affichera le nom de l’utilisateur qui l’a déclarée achevée
-- - [X] Crée une condition pour que seul un admin peut voir qui affiche la tâche marquée comme terminée
-- - [X] Crée une table qui log toutes les actions de l’utilisateur quand il clique sur la fin de tache
-- [X] Bien évidemment une isolation parfaite entre les tâches entreprises sera demandée
-- - [X] Crée une condition pour que seul les membres de cette company peuvent voir leur propre tâches
-- [V] Un système d’authentification devra être mis en place se basant sur un couple mail / password.
-- [V] La procédure de récupération de mot de passe devra être fonctionnelle
-- - [V] Log des mail via maildev
-- [X] Le fait de cocher une tâche ne provoque pas le rechargement de la page mais une mise à jour de celle-ci
-- - [X] Gérer les chargements via JQuery ou Ajax ou Livewire
-- [X] L’administrateur seul peut repasser l’état d’une tâche à inachevée
--  - [X] Crée une condition sur le rôle admin permettant de mettre a jour en non completé
+- [ ] Elle devrait pouvoir être utilisée par plusieurs entreprises clientes
+- [ ] Chaque client possédera plusieurs employés qui pourront accéder aux tâches propres à leur entreprise.
+- [ ] Chaque tâche marquée comme terminée affichera le nom de l’utilisateur qui l’a déclarée achevée
+- - [ ] Crée une condition pour que seul un admin peut voir qui affiche la tâche marquée comme terminée
+- - [ ] Crée une table qui log toutes les actions de l’utilisateur quand il clique sur la fin de tache
+- [ ] Bien évidemment une isolation parfaite entre les tâches entreprises sera demandée
+- - [ ] Crée une condition pour que seul les membres de cette company peuvent voir leur propre tâches
+- [X] Un système d’authentification devra être mis en place se basant sur un couple mail / password.
+- [X] La procédure de récupération de mot de passe devra être fonctionnelle
+- - [X] Log des mail via maildev
+- [ ] Le fait de cocher une tâche ne provoque pas le rechargement de la page mais une mise à jour de celle-ci
+- - [ ] Gérer les chargements via JQuery ou Ajax ou Livewire
+- [ ] L’administrateur seul peut repasser l’état d’une tâche à inachevée
+-  - [ ] Crée une condition sur le rôle admin permettant de mettre a jour en non completé
 ### Bonus :
+<<<<<<< HEAD
 - [X] Bonus: interface multilangue FR/EN
 - - [X] Rajout des langues `FR` dans des fichiers de traduction
 - - [X] Traductions des fichiers
@@ -26,6 +27,18 @@
 - [X] Bonus: gestion des dates. Possibilité d’ajouter une deadline sur une tâche. La tâche s’affiche en rouge si la deadline est dépassée. Affichage de la date à laquelle la tâche a été achevée.
 - [O]
 - [x]
+=======
+- [ ] Bonus: interface multilangue FR/EN
+- - [ ] Rajout des langues `FR` dans des fichiers de traduction
+- - [ ] Traductions des fichiers
+- - [ ] Intégration des `traductions app.blade.php`
+- [ ] Bonus: une page de gestion des employés de l’entreprise avec la possibilité de créer un nouvel employé et d’envoyer une invitation par mail
+- - [ ] Formulaire de création d'employés accessible que par l'entreprise
+- - [ ] Formulaire d'envoi d'invitation par mail
+- - [ ] Système de gestion des employés
+- [ ] Bonus: gestion des dates. Possibilité d’ajouter une deadline sur une tâche. La tâche s’affiche en rouge si la deadline est dépassée. Affichage de la date à laquelle la tâche a été achevée.
+
+>>>>>>> 5a05a96 (Update ToDo List UPDATE Checkbox)
 
 # Aspects techniques
 - Utilisation de Laravel comme base d’application
