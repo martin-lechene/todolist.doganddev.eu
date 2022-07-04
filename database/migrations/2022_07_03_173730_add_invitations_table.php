@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('tasks', function (Blueprint $table) {
-                $table->foreignId('user_id');
+        Schema::create('invitations', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('email')->unique();
+            $table->string('invitation_token', 32)->unique()->nullable();
+            $table->timestamp('registered_at')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('tasks', function (Blueprint $table) {
-            //
-        });
+        //
     }
 };
