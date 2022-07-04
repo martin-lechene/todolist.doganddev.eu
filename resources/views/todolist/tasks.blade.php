@@ -15,16 +15,19 @@
     @include('common.errors')
 
     <div class="p-3">
-        <a class="btn btn-secondary" href="/">
-            <i class="fa fa-plus"></i> Add tasks
-        </a>
+
     @if (count($tasks) > 0)
             <div class="row">
-                <h3>{{ __('3 task remains') }}</h3>
+                <div class="d-flex justify-content-end font-weight-bold">
+                    <a class="btn btn-secondary" href="/">
+                        <i class="fa fa-plus"></i> <b>Add tasks</b>
+                    </a>
+                </div>
+                <h4>{{ __('3 task remains') }}</h4>
                 @foreach ($tasks as $task)
                     @if ($task->user_id == Auth::user()->id)
                         @if ($task->completed == 0)
-                            @if($loop->index < 3)
+                            @if($loop->index < 10)
                             <ul class="custom-checkbox rounded">
                                 <li>
                                     <form method="POST" action="{# { route('task', {# task id #}) } #}">
@@ -43,12 +46,10 @@
                 <!-- If tasks is not completed  -->
                 <!-- If tasks is completed  -->
                 <h4>{{ __('Completed tasks') }}</h4>
-                <div class="col-12">
                 @foreach ($tasks as $task)
                     @if ($task->user_id == Auth::user()->id)
                         @if ($task->completed == 1)
                             <ul class="custom-checkbox">
-
                                 <li>
                                     <input  type="checkbox" id="{# task id #}" checked disabled />
                                     <label  for="{# task id #}">
@@ -60,7 +61,6 @@
                         @endif
                     @endif
                 @endforeach
-                </div>
             </div>
     @else
         <div class="alert alert-info">
