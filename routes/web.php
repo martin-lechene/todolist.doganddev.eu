@@ -31,23 +31,64 @@ Route::get('register/request', 'Auth\RegisterController@requestInvitation')->nam
 Route::post('invitations', 'InvitationsController@store')->middleware('guest')->name('storeInvitation');
 
 // AdminLTE page
-Route::group([
-    'middleware' => ['auth', 'admin'],
-    'prefix' => 'admin'
-], function() {
     Route::get('/admin', function () {
+
         $users = User::orderBy('created_at', 'asc')->get();
         $tasks = Task::orderBy('created_at', 'asc')->get();
 
-        return view('
-        welcome', [
+        return view('admin.welcome', [
             'users' => $users,
             'tasks' => $tasks
         ]);
-
     });
 
-});
+    Route::get('/admin/users', function () {
+
+        $users = User::orderBy('created_at', 'asc')->get();
+        $tasks = Task::orderBy('created_at', 'asc')->get();
+
+        return view('admin.users.list', [
+            'users' => $users,
+            'tasks' => $tasks
+        ]);
+    });
+
+    Route::get('/admin/users/{user}', function (User $user) {
+
+        $users = User::orderBy('created_at', 'asc')->get();
+        $tasks = Task::orderBy('created_at', 'asc')->get();
+        $user = Task::find($user);
+
+        return view('admin.users.view', [
+            'users' => $users,
+            'tasks' => $tasks,
+            'user' => $user
+        ]);
+    });
+
+    Route::get('/admin/tasks', function () {
+
+        $users = User::orderBy('created_at', 'asc')->get();
+        $tasks = Task::orderBy('created_at', 'asc')->get();
+
+        return view('admin.tasks.list', [
+            'users' => $users,
+            'tasks' => $tasks
+        ]);
+    });
+
+    Route::get('/admin/tasks/{task}', function (Task $task) {
+
+        $users = User::orderBy('created_at', 'asc')->get();
+        $tasks = Task::orderBy('created_at', 'asc')->get();
+        $task = Task::find($task);
+
+        return view('admin.tasks.view', [
+            'users' => $users,
+            'tasks' => $tasks,
+            'task' => $task
+        ]);
+    });
 
 
 /**
@@ -75,10 +116,6 @@ Route::get('/tasks', function () {
 /**
  * Add New Task
  */
-Route::group([
-    'middleware' => ['auth', 'admin'],
-    'prefix' => 'task.add'
-], function() {
     Route::post('/task', function (Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
@@ -98,21 +135,14 @@ Route::group([
 
         return redirect('/tasks');
     });
-});
 
 /**
  * Delete Task
  */
-Route::group([
-    'middleware' => ['auth', 'admin'],
-    'prefix' => 'task.delete'
-], function() {
-        Route::delete('/task/{task}', function (Task $task) {
+    Route::delete('/task/{task}', function (Task $task) {
         $task->delete();
         return redirect('/tasks');
     });
-});
-
 
 /**
  * Update Task
