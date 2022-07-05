@@ -31,7 +31,7 @@ class UserFactory extends Factory
             'url_website' => fake()->url(),
             'is_active' => rand(0, 1),
             'role' => ['admin', 'user'][rand(0, 1)],
-            'company' => rand(0,10),
+            'company' => rand(0,20),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ];

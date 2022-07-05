@@ -35,7 +35,7 @@ class CompanyFactory extends Factory
             'url_tw' => $this->faker->url,
             'url_ig' => $this->faker->url,
             'url_yt' => $this->faker->url,
-            'user_id' => rand(1, 10),
+            'user_id' => rand(1, 20),
         ];
     }
 }
