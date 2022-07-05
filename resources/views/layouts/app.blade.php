@@ -39,8 +39,41 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/tasks">{{ __('To Do List') }}</a>
+                            <a class="nav-link" href="/">{{ __('Home') }}</a>
                         </li>
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about">{{ __('About') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/contact">{{ __('Contact') }}</a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="/tasks">{{ __('My to do list') }}</a>
+                            </li>
+
+                            @if (Auth::user()->role == 'admin')
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin">{{ __('Admin') }}</a>
+                            </li>
+                            @elseif (Auth::user()->role == 'company')
+                            <li class="nav-item">
+                                <a class="nav-link" href="/company">{{ __('Company') }}</a>
+                            </li>
+                            @endif
+                        @endguest
+
+                        <!-- System of langue french/english-->
+                        @if (str_replace('_', '-', app()->getLocale()) == 'en')
+                            <li class="nav-item">
+                                <a class="nav-link" href="/fr"><b>{{ __('English') }}</b> / {{ __('French') }}</a>
+                            </li>
+                        @elseif (str_replace('_', '-', app()->getLocale()) == 'fr')
+                        <li class="nav-item">
+                            <a class="nav-link" href="/en"><b>{{ __('French') }}</b> / {{ __('English') }}</a>
+                        </li>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
