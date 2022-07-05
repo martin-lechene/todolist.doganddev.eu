@@ -8,19 +8,19 @@ Created by [Martin Lechêne](https://martin.lechene.be/) for [Canell](https://ca
 - - [ ] Crée une condition pour que seul un admin peut voir qui affiche la tâche marquée comme terminée
 - - [ ] Crée une table qui log toutes les actions de l’utilisateur quand il clique sur la fin de tache
 - [ ] Bien évidemment une isolation parfaite entre les tâches entreprises sera demandée
-- - [ ] Crée une condition pour que seul les membres de cette company peuvent voir leur propre tâches
+- - [] Crée une condition pour que seul les membres de cette company peuvent voir leur propre tâches
 - [X] Un système d’authentification devra être mis en place se basant sur un couple mail / password.
 - [X] La procédure de récupération de mot de passe devra être fonctionnelle
 - - [X] Log des mail via maildev
 - [ ] Le fait de cocher une tâche ne provoque pas le rechargement de la page mais une mise à jour de celle-ci
 - - [ ] Gérer les chargements via JQuery ou Ajax ou Livewire
-- [ ] L’administrateur seul peut repasser l’état d’une tâche à inachevée
--  - [ ] Crée une condition sur le rôle admin permettant de mettre a jour en non completé
+- [X] L’administrateur seul peut repasser l’état d’une tâche à inachevée
+-  - [X] Crée une condition sur le rôle admin permettant de mettre a jour en non completé
 #### Bonus :
 - [ ] Bonus: interface multilangue FR/EN
-- - [ ] Rajout des langues `FR` dans des fichiers de traduction
+- - [X] Rajout des langues `FR` dans des fichiers de traduction
 - - [ ] Traductions des fichiers
-- - [ ] Intégration des `traductions app.blade.php`
+- - [ ] Intégration button fr/en des `traductions app.blade.php`
 - [ ] Bonus: une page de gestion des employés de l’entreprise avec la possibilité de créer un nouvel employé et d’envoyer une invitation par mail
 - - [ ] Formulaire de création d'employés accessible que par l'entreprise
 - - [ ] Formulaire d'envoi d'invitation par mail
