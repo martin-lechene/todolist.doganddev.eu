@@ -1,9 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <div class="row justify-content-center">
-        <div class="col-md-8 card p-3">
             <h4 class="text-center"">{{ __('Register') }}</h4>
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
@@ -66,6 +63,4 @@
                             </div>
                         </div>
                     </form>
-        </div>
-    </div>
 @endsection
