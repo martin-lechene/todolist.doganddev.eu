@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('role');
-            $table->foreignId('company_id')->constrained()->nullable();
+            $table->foreignId('companys_id')->constrained()->nullable();
             $table->string('url_website')->nullable();
             $table->string('url_fb')->nullable();
             $table->string('url_tw')->nullable();
