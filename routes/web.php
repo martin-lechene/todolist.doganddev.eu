@@ -159,4 +159,5 @@ Route::group([
     });
 });
 
-
+// Route for gestion tasks with livewire components of
+Route::view('tasks/list', 'livewire.home');
