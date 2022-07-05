@@ -27,7 +27,7 @@
                 @endif
                 <h4>{{ __('3 task remains') }}</h4>
                 @foreach ($tasks->take(10) as $task)
-                    @if (($task->user_id == Auth::user()->id) || (Auth::user()->role == 'admin') || ($task->company == Auth::user()->company))
+                    @if (($task->user_id == Auth::user()->id) || (Auth::user()->role == 'admin') || ($task->company_id == Auth::user()->company_id))
                         @if ($task->completed == 0)
                             <ul class="custom-checkbox rounded">
                                 <li>
@@ -58,7 +58,6 @@
                 @foreach ($tasks->take(10) as $task)
                     @if (($task->user_id == Auth::user()->id) || (Auth::user()->role == 'admin') || ($task->company == Auth::user()->company))
                         @if ($task->completed == 1)
-                            @if($loop->iteration > 3)
                             <ul class="custom-checkbox">
                                 <li>
                                     <input  type="checkbox" id="{{ $task->id }}" checked disabled />
@@ -77,7 +76,6 @@
                                     </label>
                                 </li>
                             </ul>
-                            @endif
                         @endif
                     @endif
                 @endforeach
