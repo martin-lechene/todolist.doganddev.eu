@@ -21,7 +21,7 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->safeEmail(),
             'email_verified_at' => now(),
-            'url_img' => 'https://picsum.photos/200/300',
+            'url_img' => 'https://picsum.photos/50/50',
             'desc_short' => fake()->sentence(),
             'desc_long' => fake()->paragraph(),
             'url_fb' => fake()->url(),
@@ -29,7 +29,7 @@ class UserFactory extends Factory
             'url_ig' => fake()->url(),
             'url_yt' => fake()->url(),
             'url_website' => fake()->url(),
-            'is_active' => true,
+            'is_active' => rand(0, 1),
             'role' => ['admin', 'user'][rand(0, 1)],
             'company' => rand(0,10),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
