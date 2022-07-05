@@ -26,7 +26,7 @@
                     </div>
                 @endif
                 <h4>{{ __('3 task remains') }}</h4>
-                @foreach ($tasks as $task)
+                @foreach ($tasks->take(10) as $task)
                     @if (($task->user_id == Auth::user()->id) || (Auth::user()->role == 'admin') || ($task->company == Auth::user()->company))
                         @if ($task->completed == 0)
                             <ul class="custom-checkbox rounded">
@@ -34,8 +34,17 @@
                                     <form method="POST" action="route('task', $task->id)">
                                         <input type="checkbox" value="1" id="{{ $task->id }}">
                                         <label for="{{ $task->id }}">
-                                            <i class="fas fa-times text-danger"></i>
+                                            <i class="fas fa-circle text-warning"></i>
                                             {{ $task->name }}
+                                            @if (Auth::user()->role == 'admin')
+                                                <form method="POST" action="route('task', $task->id)">
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <input type="hidden" name="_token" value="{# { csrf_token() } #}">
+                                                    <a type="submit" class="d-flex justify-content-end">
+                                                        <i class="fa fa-trash-alt text-danger"></i>
+                                                    </a>
+                                                </form>
+                                            @endif
                                         </label>
                                     </form>
                                 </li>
@@ -46,9 +55,10 @@
                 <!-- If tasks is not completed  -->
                 <!-- If tasks is completed  -->
                 <h4>{{ __('Completed tasks') }}</h4>
-                @foreach ($tasks as $task)
+                @foreach ($tasks->take(10) as $task)
                     @if (($task->user_id == Auth::user()->id) || (Auth::user()->role == 'admin') || ($task->company == Auth::user()->company))
                         @if ($task->completed == 1)
+                            @if($loop->iteration > 3)
                             <ul class="custom-checkbox">
                                 <li>
                                     <input  type="checkbox" id="{{ $task->id }}" checked disabled />
@@ -56,17 +66,18 @@
                                         <i class="fa fa-check-circle text-success"></i>
                                     {{ $task->name }}
                                     @if (Auth::user()->role == 'admin')
-                                    <form method="POST" action="{{ route('task', task->id) }}">
+                                    <form method="POST" action="route('task', $task->id)">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{# { csrf_token() } #}">
-                                        <button type="submit" class="btn">
+                                        <a type="submit" class="d-flex justify-content-end">
                                             <i class="fa fa-trash-alt text-danger"></i>
-                                        </button>
+                                        </a>
                                     </form>
                                     @endif
                                     </label>
                                 </li>
                             </ul>
+                            @endif
                         @endif
                     @endif
                 @endforeach
