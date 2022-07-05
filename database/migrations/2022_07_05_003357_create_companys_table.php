@@ -13,9 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create('companys', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->tinyText('desc_short');
+            $table->foreignId('user_id')->constrained();
+            $table->text('desc_long');
+            $table->string('url_img');
+            $table->string('url_web');
+            $table->string('url_fb');
+            $table->string('url_tw');
+            $table->string('url_ig');
+            $table->string('url_yt');
             $table->timestamps();
         });
     }
@@ -27,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tasks');
+        Schema::dropIfExists('companys');
     }
 };
