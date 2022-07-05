@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->tinyText('desc_short');
-            $table->foreignId('user_id')->constrained();
             $table->text('desc_long');
+            $table->foreignId('user_id')->constrained();
             $table->string('url_img');
             $table->string('url_web');
             $table->string('url_fb');
